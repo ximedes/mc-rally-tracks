@@ -6,6 +6,7 @@ but to quickly get started, here's the command to run Rally:
 ```
 $ esrally
   --target-hosts=<hostname>:<port>
+  --track=mc
   --client-options="use_ssl:true,verify_certs:true,timeout:60"
   --pipeline=benchmark-only
   --telemetry=node-stats
@@ -25,7 +26,7 @@ Here's an example for quick copy/paste-ing that only needs the hostname to be re
 runs against the _biggest_ division on ACC:
 
 ```
-esrally --target-hosts=HOSTNAME:443 --client-options="use_ssl:true,verify_certs:true,timeout:60" --pipeline=benchmark-only --telemetry=node-stats --track-params="params/ultra.json" 
+esrally --target-hosts=HOSTNAME:443 --track=mc --client-options="use_ssl:true,verify_certs:true,timeout:60" --pipeline=benchmark-only --telemetry=node-stats --track-params="params/ultra.json" 
 ```
 
 # Running specific tasks
