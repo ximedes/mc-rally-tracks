@@ -1,0 +1,17 @@
+{% import "rally.helpers" as rally with context %}
+
+{
+  "version": 2,
+  "description": "Track for MC",
+  "operations": [
+    {{ rally.collect(parts = "operations/*.json") }}
+  ],
+  "schedule": [
+    {
+      "operation": "kpi-statistics-declines",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": 1000,
+      "iterations": 1000
+    }
+  ]
+}
