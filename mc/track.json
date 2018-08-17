@@ -114,6 +114,19 @@
       "clients": {{ clients|default(1) }},
       "warmup-iterations": {{ warmup|default(1000) }},
       "iterations": {{ iterations|default(1000) }}
+    },
+
+    {
+      "operation": "kpi-purchase-ratio-week-offset-average-on",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
+    {
+      "operation": "kpi-purchase-ratio-week-offset-average-between",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
     }
 
 
