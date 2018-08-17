@@ -1,17 +1,17 @@
 {
-  "name": "kpi-turnover-ratio-prior",
+  "name": "kpi-refund-ratio-week-offset-average-sale-turnover-between",
   "operation-type": "search",
   "index": "mc-rally-trx",
-  "body":{
-    "size":0,
-    "query":{
+  "body": {
+    "size": 0,
+    "query": {
       "bool" : {
         "filter" : [
           {
             "range" : {
               "transactionDate" : {
                 "from" : "2018-07-10T00:00:00+02:00",
-                "to" : "2018-07-11T00:00:00+02:00",
+                "to" : "2018-07-17T00:00:00+02:00",
                 "include_lower" : true,
                 "include_upper" : false,
                 "format" : "yyyy-MM-dd'T'HH:mm:ssZZ",
@@ -23,10 +23,7 @@
             "terms" : {
               "type" : [
                 "SALE",
-                "REFUND",
-                "REVERSAL",
-                "CHARGEBACK",
-                "INQUIRY"
+                "REVERSAL"
               ],
               "boost" : 1.0
             }

@@ -13,6 +13,30 @@
       "warmup-iterations": {{ warmup|default(1000) }},
       "iterations": {{ iterations|default(1000) }}
     },
+    {
+      "operation": "kpi-statistics-contactless",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
+    {
+      "operation": "kpi-statistics-numer-of-transactions",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
+    {
+      "operation": "kpi-statistics-turnover",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
+    {
+      "operation": "kpi-statistics-volume",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
 
     {
       "operation": "kpi-failed-ratio-volume-failed-on",
@@ -58,6 +82,41 @@
       "clients": {{ clients|default(1) }},
       "warmup-iterations": {{ warmup|default(1000) }},
       "iterations": {{ iterations|default(1000) }}
+    },
+
+    {
+      "operation": "kpi-refund-ratio-week-offset-average-refund-turnover-between",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
+    {
+      "operation": "kpi-refund-ratio-week-offset-average-refund-turnover-on",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
+    {
+      "operation": "kpi-refund-ratio-week-offset-average-sale-turnover-between",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
+    {
+      "operation": "kpi-refund-ratio-week-offset-average-sale-turnover-on",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
+
+    {
+      "operation": "kpi-turnover-report-daily",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
     }
+
+
+
   ]
 }
