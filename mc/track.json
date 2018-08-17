@@ -129,7 +129,18 @@
       "iterations": {{ iterations|default(1000) }}
     }
 
-
+    {
+      "operation": "kpi-declined-by-reason-month",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
+    {
+      "operation": "kpi-declined-by-reason-month-number-of-transactions",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    }
 
   ]
 }
