@@ -1,5 +1,5 @@
 {
-  "name": "kpi-failed-ratio-volume-failed-between",
+  "name": "kpi-turnover-ratio-given",
   "operation-type": "search",
   "index": "mc-rally-trx",
   "body":{
@@ -10,8 +10,8 @@
           {
             "range" : {
               "transactionDate" : {
-                "from" : "2018-07-10T00:00:00+02:00",
-                "to" : "2018-07-17T00:00:00+02:00",
+                "from" : "2018-07-17T00:00:00+02:00",
+                "to" : "2018-07-18T00:00:00+02:00",
                 "include_lower" : true,
                 "include_upper" : false,
                 "format" : "yyyy-MM-dd'T'HH:mm:ssZZ",
@@ -21,10 +21,22 @@
           },
           {
             "terms" : {
+              "type" : [
+                "SALE",
+                "REFUND",
+                "REVERSAL",
+                "CHARGEBACK",
+                "INQUIRY"
+              ],
+              "boost" : 1.0
+            }
+          },
+          {
+            "terms" : {
               "status" : [
-                "DECLINED",
-                "ERROR",
-                "EXPIRED"
+                "PENDING",
+                "ACCEPTED",
+                "SETTLED"
               ],
               "boost" : 1.0
             }
@@ -44,6 +56,12 @@
         "disable_coord" : false,
         "adjust_pure_negative" : true,
         "boost" : 1.0
+      }
+    }, "aggs":{
+      "SUM" : {
+        "sum" : {
+          "field" : "transactionAmount"
+        }
       }
     }
   }

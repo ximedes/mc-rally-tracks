@@ -20,7 +20,6 @@
       "warmup-iterations": {{ warmup|default(1000) }},
       "iterations": {{ iterations|default(1000) }}
     },
-
     {
       "operation": "kpi-failed-ratio-volume-failed-between",
       "clients": {{ clients|default(1) }},
@@ -41,9 +40,21 @@
       "warmup-iterations": {{ warmup|default(1000) }},
       "iterations": {{ iterations|default(1000) }}
     },
-
     {
       "operation": "kpi-volume-ratio-prior",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
+
+    {
+      "operation": "kpi-turnover-ratio-given",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
+    {
+      "operation": "kpi-turnover-ratio-prior",
       "clients": {{ clients|default(1) }},
       "warmup-iterations": {{ warmup|default(1000) }},
       "iterations": {{ iterations|default(1000) }}

@@ -1,5 +1,5 @@
 {
-  "name": "kpi-failed-ratio-volume-failed-between",
+  "name": "kpi-turnover-ratio-prior",
   "operation-type": "search",
   "index": "mc-rally-trx",
   "body":{
@@ -11,7 +11,7 @@
             "range" : {
               "transactionDate" : {
                 "from" : "2018-07-10T00:00:00+02:00",
-                "to" : "2018-07-17T00:00:00+02:00",
+                "to" : "2018-07-11T00:00:00+02:00",
                 "include_lower" : true,
                 "include_upper" : false,
                 "format" : "yyyy-MM-dd'T'HH:mm:ssZZ",
@@ -21,10 +21,22 @@
           },
           {
             "terms" : {
+              "type" : [
+                "SALE",
+                "REFUND",
+                "REVERSAL",
+                "CHARGEBACK",
+                "INQUIRY"
+              ],
+              "boost" : 1.0
+            }
+          },
+          {
+            "terms" : {
               "status" : [
-                "DECLINED",
-                "ERROR",
-                "EXPIRED"
+                "PENDING",
+                "ACCEPTED",
+                "SETTLED"
               ],
               "boost" : 1.0
             }
@@ -34,7 +46,7 @@
               "location.id" : {
                 "index" : "mc-hierarchies",
                 "type" : "hierarchy",
-                "id" : "{{ division_id }}",
+                "id" : "016541db-2fa6-43bc-b833-07cda2e8c0c1",
                 "path" : "locationIDs"
               },
               "boost" : 1.0
@@ -44,6 +56,12 @@
         "disable_coord" : false,
         "adjust_pure_negative" : true,
         "boost" : 1.0
+      }
+    }, "aggs":{
+      "SUM" : {
+        "sum" : {
+          "field" : "transactionAmount"
+        }
       }
     }
   }
