@@ -10,8 +10,22 @@
     {
       "operation": "kpi-statistics-declines",
       "clients": {{ clients|default(1) }},
-      "warmup-iterations": 1000,
-      "iterations": 1000
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
+
+    {
+      "operation": "kpi-failed-ratio-volume-failed-on",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
+
+    {
+      "operation": "kpi-failed-ratio-volume-failed-between",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
     }
   ]
 }
