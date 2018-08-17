@@ -1,6 +1,5 @@
 {
   "name": "kpi-declined-by-reason-month-number-of-transactions",
-  "description": "This is the same query as for kpi-statistics-number-of-transactions, but for a diffent (longer) time period (1 month).",
   "operation-type": "search",
   "index": "mc-rally-trx",
   "body":{

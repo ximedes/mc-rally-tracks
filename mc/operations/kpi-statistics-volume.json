@@ -1,6 +1,5 @@
 {
   "name": "kpi-statistics-volume",
-  "description": "This is run twice for the statistics KPI, once for the volume and once for the contactless ratio.",
   "operation-type": "search",
   "index": "mc-rally-trx",
   "body":{

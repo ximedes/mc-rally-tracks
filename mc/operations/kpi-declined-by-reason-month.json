@@ -1,6 +1,5 @@
 {
   "name": "kpi-declined-by-reason-month",
-  "description": "This is the same query as for kpi-statistics-declines, but for a diffent (longer) time period (1 month).",
   "operation-type": "search",
   "index": "mc-rally-trx",
   "body":{
