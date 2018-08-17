@@ -20,7 +20,7 @@
       "iterations": {{ iterations|default(1000) }}
     },
     {
-      "operation": "kpi-statistics-numer-of-transactions",
+      "operation": "kpi-statistics-number-of-transactions",
       "clients": {{ clients|default(1) }},
       "warmup-iterations": {{ warmup|default(1000) }},
       "iterations": {{ iterations|default(1000) }}
