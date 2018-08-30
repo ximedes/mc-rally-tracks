@@ -36,7 +36,7 @@
           {
             "terms": {
               "location.externalRef": {
-                "index": "mc-1shard-hierarchies",
+                "index" : "{{ hierarchy_index|default('mc-hierarchies') }}",
                 "type": "hierarchy",
                 "id": "{{ division_id }}",
                 "path": "locationIDs"

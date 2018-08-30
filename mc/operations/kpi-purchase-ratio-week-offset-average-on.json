@@ -40,7 +40,7 @@
           {
             "terms" : {
               "location.id" : {
-                "index" : "mc-hierarchies",
+                "index" : "{{ hierarchy_index|default('mc-hierarchies') }}",
                 "type" : "hierarchy",
                 "id" : "{{ division_id }}",
                 "path" : "locationIDs"
