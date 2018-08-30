@@ -1,7 +1,7 @@
 {
   "name": "kpi-turnover-ratio-given",
   "operation-type": "search",
-  "index": "{{ division_id|default(mc-rally-trx) }}",
+  "index": "{{ index|default(mc-rally-trx) }}",
   "body":{
     "size":0,
     "query":{
