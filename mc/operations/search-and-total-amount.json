@@ -1,0 +1,35 @@
+{
+  "name": "search-and-total-amount",
+  "operation-type": "search",
+  "index": "mc-rally-trx",
+  "body": {
+    "size": 10,
+    "query": {
+      "bool": {
+        "filter": [
+          {
+            "terms": {
+              "location.id": {
+                "index": "mc-hierarchies",
+                "type": "hierarchy",
+                "id": "016574d2-eafc-40d8-ae42-8429ee54e0ef",
+                "path": "locationIDs"
+              },
+              "boost": 1.0
+            }
+          }
+        ],
+        "disable_coord": false,
+        "adjust_pure_negative": true,
+        "boost": 1.0
+      }
+    },
+    "aggs": {
+      "SUM": {
+        "sum": {
+          "field": "transactionAmount"
+        }
+      }
+    }
+  }
+}

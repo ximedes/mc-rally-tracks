@@ -1,7 +1,7 @@
 {
-  "name": "kpi-statistics-declines",
+  "name": "kpi-statistics-declines-on-contract",
   "operation-type": "search",
-  "index": "mc-rally-2018-06,mc-rally-2018-07",
+  "index": "mc-magical-2018-06,mc-magical-2018-07",
   "body":{
     "size":0,
     "query":{
@@ -33,18 +33,12 @@
               }
             }
           },
-          {
-            "terms": {
-              "location.id": {
-                "index": "mc-1shard-hierarchies",
-                "type": "hierarchy",
-                "id": "{{ division_id }}",
-                "path": "locationIDs"
-              },
-              "boost": 1
+{
+            "term": {
+              "contract.externalRef": "36159359V01"
             }
-          }
-        ],
+          }        
+],
         "disable_coord": false,
         "adjust_pure_negative": true,
         "boost": 1

@@ -1,0 +1,133 @@
+{% import "rally.helpers" as rally with context %}
+
+{
+  "version": 2,
+  "description": "Track for MC",
+  "operations": [
+    {{ rally.collect(parts = "operations/*.json") }}
+  ],
+  "schedule": [
+    {
+      "operation": "kpi-statistics-declines",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
+    {
+      "operation": "kpi-statistics-declines-on-contract",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
+    {
+      "operation": "kpi-statistics-declines-loc-ref",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
+    {
+      "operation": "kpi-statistics-contactless",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
+    {
+      "operation": "kpi-statistics-number-of-transactions",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
+    {
+      "operation": "kpi-statistics-turnover",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
+    {
+      "operation": "kpi-statistics-volume",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
+
+    {
+      "operation": "kpi-failed-ratio-volume-failed-on",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
+    {
+      "operation": "kpi-failed-ratio-volume-failed-between",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
+
+    {
+      "operation": "filter-options",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
+
+    {
+      "operation": "kpi-volume-ratio-given",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
+    {
+      "operation": "kpi-volume-ratio-prior",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
+
+    {
+      "operation": "kpi-turnover-ratio-given",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
+    {
+      "operation": "kpi-turnover-ratio-prior",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
+
+    {
+      "operation": "kpi-turnover-report-daily",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
+
+    {
+      "operation": "kpi-purchase-ratio-week-offset-average-on",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
+    {
+      "operation": "kpi-purchase-ratio-week-offset-average-between",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
+
+    {
+      "operation": "kpi-declined-by-reason-month",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    },
+    {
+      "operation": "kpi-declined-by-reason-month-number-of-transactions",
+      "clients": {{ clients|default(1) }},
+      "warmup-iterations": {{ warmup|default(1000) }},
+      "iterations": {{ iterations|default(1000) }}
+    }
+
+  ]
+}
