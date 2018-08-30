@@ -17,9 +17,6 @@
             "operation": "kpi-declined-by-reason-month"
           },
           {
-            "operation": "kpi-failed-ratio-volume-failed-between"
-          },
-          {
             "operation": "kpi-purchase-ratio-week-offset-average-between"
           },
           {
@@ -63,8 +60,12 @@
           },
           {
             "operation": "kpi-volume-ratio-prior"
+          },
+          {
+          "operation": "kpi-failed-ratio-volume-failed-between"
           }
-        ]
+
+]
       }
     }
   ]
