@@ -1,7 +1,7 @@
 {
   "name": "kpi-statistics-declines",
   "operation-type": "search",
-  "index": "mc-rally-2018-06,mc-rally-2018-07",
+  "index": "{{ division_id|default(mc-rally-trx) }}",
   "body":{
     "size":0,
     "query":{

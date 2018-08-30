@@ -1,7 +1,7 @@
 {
   "name": "kpi-statistics-declines-on-contract",
   "operation-type": "search",
-  "index": "mc-magical-2018-06,mc-magical-2018-07",
+  "index": "{{ division_id|default(mc-rally-trx) }}",
   "body":{
     "size":0,
     "query":{
