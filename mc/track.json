@@ -20,9 +20,6 @@
             "operation": "kpi-failed-ratio-volume-failed-between"
           },
           {
-            "operation": "kpi-purchase-ratio-week-offset-average-between"
-          },
-          {
             "operation": "kpi-statistics-contactless"
           },
           {
@@ -63,6 +60,9 @@
           },
           {
             "operation": "kpi-volume-ratio-prior"
+          },
+          {
+          "operation": "kpi-purchase-ratio-week-offset-average-between"
           }
         ]
       }
