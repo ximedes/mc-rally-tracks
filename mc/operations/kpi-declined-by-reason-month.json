@@ -1,7 +1,7 @@
 {
   "name": "kpi-declined-by-reason-month",
   "operation-type": "search",
-  "index": "{{ wheretosearch|default('mc-rally-trx') }}",
+  "index": "{{ wheretosearch|default("mc-rally-trx") }}",
   "body":{
     "size":0,
     "query":{
