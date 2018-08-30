@@ -1,7 +1,7 @@
 {
   "name": "filter-options",
   "operation-type": "search",
-  "index": "mc-rally-trx",
+  "index": "{{ division_id|default(mc-rally-trx) }}",
   "body":{
     "size":0,
     "query":{
