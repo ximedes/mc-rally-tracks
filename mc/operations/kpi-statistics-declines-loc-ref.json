@@ -24,8 +24,8 @@
           {
             "range": {
               "transactionDate": {
-                "from": "2018-07-17",
-                "to": "2018-07-18",
+                "from": "2018-05-17",
+                "to": "2018-05-18",
                 "include_lower": true,
                 "include_upper": false,
                 "format": "yyyy-MM-dd",
