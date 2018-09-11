@@ -1,0 +1,40 @@
+{
+  "name": "query-trx-search-last-30-days",
+  "operation-type": "search",
+  "index": "{{ wheretosearch|default('mc-rally-trx') }}",
+  "body": {
+    "size": 10,
+    "query": {
+      "bool": {
+        "filter": [
+          {
+            "range": {
+              "transactionDate": {
+                "from": "2018-08-12T00:00:00+02:00",
+                "to": "2018-09-12T00:00:00+02:00",
+                "include_lower": true,
+                "include_upper": false,
+                "format": "yyyy-MM-dd'T'HH:mm:ssZZ",
+                "boost": 1.0
+              }
+            }
+          },
+          {
+            "terms": {
+              "location.id": {
+                "index": "{{ hierarchy_index|default('mc-hierarchies') }}",
+                "type": "hierarchy",
+                "id": "{{ division_id }}",
+                "path": "locationIDs"
+              },
+              "boost": 1.0
+            }
+          }
+        ],
+        "disable_coord": false,
+        "adjust_pure_negative": true,
+        "boost": 1.0
+      }
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "name": "query-trx-search-complex",
+  "operation-type": "search",
+  "index": "{{ wheretosearch|default('mc-rally-trx') }}",
+  "body": {
+    "size": 10,
+    "query": {
+      "bool": {
+        "filter": [
+          {
+            "range": {
+              "transactionDate": {
+                "from": "2018-08-12T10:19:54+02:00",
+                "to": "2018-09-11T10:19:54+02:00",
+                "include_lower": true,
+                "include_upper": false,
+                "format": "yyyy-MM-dd'T'HH:mm:ssZZ",
+                "boost": 1.0
+              }
+            }
+          },
+          {
+            "range": {
+              "transactionAmount": {
+                "from": 10000,
+                "to": 100000,
+                "include_lower": true,
+                "include_upper": true,
+                "boost": 1.0
+              }
+            }
+          },
+          {
+            "terms": {
+              "type": [
+                "SALE"
+              ],
+              "boost": 1.0
+            }
+          },
+          {
+            "terms": {
+              "status": [
+                "SETTLED"
+              ],
+              "boost": 1.0
+            }
+          },
+          {
+            "query_string": {
+              "query": "CCV",
+              "fields": [],
+              "use_dis_max": true,
+              "tie_breaker": 0.0,
+              "default_operator": "or",
+              "auto_generate_phrase_queries": false,
+              "max_determinized_states": 10000,
+              "enable_position_increments": true,
+              "fuzziness": "AUTO",
+              "fuzzy_prefix_length": 0,
+              "fuzzy_max_expansions": 50,
+              "phrase_slop": 0,
+              "escape": false,
+              "split_on_whitespace": true,
+              "boost": 1.0
+            }
+          },
+          {
+            "terms": {
+              "location.id": {
+                "index": "{{ hierarchy_index|default('mc-hierarchies') }}",
+                "type": "hierarchy",
+                "id": "{{ division_id }}",
+                "path": "locationIDs"
+              },
+              "boost": 1.0
+            }
+          }
+        ],
+        "disable_coord": false,
+        "adjust_pure_negative": true,
+        "boost": 1.0
+      }
+    }
+  }
+}

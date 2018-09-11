@@ -1,0 +1,145 @@
+{
+  "name": "query-analytics-aggregation",
+  "operation-type": "search",
+  "index": "{{ wheretosearch|default('mc-rally-trx') }}",
+  "body": {
+    "size": 0,
+    "query": {
+      "bool": {
+        "filter": [
+          {
+            "range": {
+              "transactionDate": {
+                "from": "2017-10-01T00:00:00+02:00",
+                "to": "2018-09-01T00:00:00+02:00",
+                "include_lower": true,
+                "include_upper": false,
+                "format": "yyyy-MM-dd'T'HH:mm:ssZZ",
+                "boost": 1.0
+              }
+            }
+          },
+          {
+            "exists": {
+              "field": "interchangeFee",
+              "boost": 1.0
+            }
+          },
+          {
+            "terms": {
+              "location.id": {
+                "index": "{{ hierarchy_index|default('mc-hierarchies') }}",
+                "type": "hierarchy",
+                "id": "{{ division_id }}",
+                "path": "locationIDs"
+              },
+              "boost": 1.0
+            }
+          }
+        ],
+        "disable_coord": false,
+        "adjust_pure_negative": true,
+        "boost": 1.0
+      }
+    },
+    "aggs": {
+      "TOTAL_AMT": {
+        "sum": {
+          "field": "transactionAmount"
+        }
+      },
+      "TOTAL_ICF": {
+        "sum": {
+          "field": "interchangeFee"
+        }
+      },
+      "BILLINGREGION": {
+        "terms": {
+          "field": "billingRegion",
+          "size": 10000,
+          "min_doc_count": 1,
+          "shard_min_doc_count": 0,
+          "show_term_doc_count_error": false,
+          "order": [
+            {
+              "_count": "desc"
+            },
+            {
+              "_term": "asc"
+            }
+          ]
+        },
+        "aggregations": {
+          "BILLINGREGION_AMT": {
+            "sum": {
+              "field": "transactionAmount"
+            }
+          },
+          "BILLINGREGION_ICF": {
+            "sum": {
+              "field": "interchangeFee"
+            }
+          },
+          "PAYMENTMETHOD": {
+            "terms": {
+              "field": "paymentMethod",
+              "size": 10000,
+              "min_doc_count": 1,
+              "shard_min_doc_count": 0,
+              "show_term_doc_count_error": false,
+              "order": [
+                {
+                  "_count": "desc"
+                },
+                {
+                  "_term": "asc"
+                }
+              ]
+            },
+            "aggregations": {
+              "PAYMENTMETHOD_AMT": {
+                "sum": {
+                  "field": "transactionAmount"
+                }
+              },
+              "PAYMENTMETHOD_ICF": {
+                "sum": {
+                  "field": "interchangeFee"
+                }
+              },
+              "TYPE": {
+                "terms": {
+                  "field": "type",
+                  "size": 10000,
+                  "min_doc_count": 1,
+                  "shard_min_doc_count": 0,
+                  "show_term_doc_count_error": false,
+                  "order": [
+                    {
+                      "_count": "desc"
+                    },
+                    {
+                      "_term": "asc"
+                    }
+                  ]
+                },
+                "aggregations": {
+                  "TYPE_AMT": {
+                    "sum": {
+                      "field": "transactionAmount"
+                    }
+                  },
+                  "TYPE_ICF": {
+                    "sum": {
+                      "field": "interchangeFee"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

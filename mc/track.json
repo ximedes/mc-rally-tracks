@@ -13,57 +13,47 @@
         "iterations": {{ iterations|default(100) }},
         "clients": {{ clients|default(7) }},
         "tasks": [
-          {
-            "operation": "kpi-declined-by-reason-month"
-          },
-          {
-            "operation": "kpi-failed-ratio-volume-failed-between"
-          },
-          {
-            "operation": "kpi-statistics-contactless"
-          },
-          {
-            "operation": "kpi-turnover-ratio-given"
-          },
-          {
-            "operation": "kpi-volume-ratio-given"
-          },
-          {
-            "operation": "kpi-statistics-turnover"
-          },
-          {
-            "operation": "kpi-declined-by-reason-month-number-of-transactions"
-          },
-          {
-            "operation": "kpi-failed-ratio-volume-failed-on"
-          },
-          {
-            "operation": "kpi-purchase-ratio-week-offset-average-on"
-          },
-          {
-            "operation": "kpi-statistics-declines"
-          },
-          {
-            "operation": "kpi-statistics-declines-on-contract"
-          },
-          {
-            "operation": "kpi-statistics-number-of-transactions"
-          },
-          {
-            "operation": "kpi-statistics-volume"
-          },
-          {
-            "operation": "kpi-turnover-ratio-prior"
-          },
-          {
-            "operation": "kpi-turnover-report-daily"
-          },
-          {
-            "operation": "kpi-volume-ratio-prior"
-          },
-          {
-          "operation": "kpi-purchase-ratio-week-offset-average-between"
-          }
+          { "operation": "kpi-declined-by-reason-month" },
+          { "operation": "kpi-failed-ratio-volume-failed-between" },
+          { "operation": "kpi-statistics-contactless" },
+          { "operation": "kpi-turnover-ratio-given" },
+          { "operation": "kpi-volume-ratio-given" },
+          { "operation": "kpi-statistics-turnover" },
+          { "operation": "kpi-declined-by-reason-month-number-of-transactions" },
+          { "operation": "kpi-failed-ratio-volume-failed-on" },
+          { "operation": "kpi-purchase-ratio-week-offset-average-on" },
+          { "operation": "kpi-statistics-declines" },
+          { "operation": "kpi-statistics-declines-on-contract" },
+          { "operation": "kpi-statistics-number-of-transactions" },
+          { "operation": "kpi-statistics-volume" },
+          { "operation": "kpi-turnover-ratio-prior" },
+          { "operation": "kpi-turnover-report-daily" },
+          { "operation": "kpi-volume-ratio-prior" },
+          { "operation": "kpi-purchase-ratio-week-offset-average-between" }
+        ]
+      }
+    },
+    {
+      "parallel": {
+        "warmup-iterations": {{ warmup|default(100) }},
+        "iterations": {{ iterations|default(100) }},
+        "clients": {{ clients|default(4) }},
+        "tasks": [
+          { "operation": "query-trx-search-all" },
+          { "operation": "query-trx-search-amount-gt-100" },
+          { "operation": "query-trx-search-last-30-days" },
+          { "operation": "query-trx-search-complex" }
+        ]
+      }
+    },
+    {
+      "parallel": {
+        "warmup-iterations": {{ warmup|default(100) }},
+        "iterations": {{ iterations|default(100) }},
+        "clients": {{ clients|default(2) }},
+        "tasks": [
+          { "operation": "query-analytics-excluded" },
+          { "operation": "query-analytics-aggregation" }
         ]
       }
     }

@@ -1,0 +1,28 @@
+{
+  "name": "query-trx-search-all",
+  "operation-type": "search",
+  "index": "{{ wheretosearch|default('mc-rally-trx') }}",
+  "body": {
+    "size": 10,
+    "query": {
+      "bool": {
+        "filter": [
+          {
+            "terms": {
+              "location.id": {
+                "index": "{{ hierarchy_index|default('mc-hierarchies') }}",
+                "type": "hierarchy",
+                "id": "{{ division_id }}",
+                "path": "locationIDs"
+              },
+              "boost": 1.0
+            }
+          }
+        ],
+        "disable_coord": false,
+        "adjust_pure_negative": true,
+        "boost": 1.0
+      }
+    }
+  }
+}
