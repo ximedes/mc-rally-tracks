@@ -4,6 +4,9 @@
   "index": "{{ wheretosearch|default('mc-rally-trx') }}",
   "body": {
     "size": 10,
+    "sort" : [
+      { "transactionDate" : {"order" : "desc"}}
+    ],
     "query": {
       "bool": {
         "filter": [
